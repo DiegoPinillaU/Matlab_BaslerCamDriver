@@ -6,6 +6,7 @@
 
 #include <matrix.h>
 #include <mex.h>
+#include <map>
 
 #include <boost/assign/list_of.hpp> 
 
