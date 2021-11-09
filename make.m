@@ -24,7 +24,7 @@ drivers = fullfile(SRC, {                             ...
           });
 
 % Shared libraries:             path                    additional flags
-libraries = {  [SRC 'basler_helper\basler_set_get.cpp']    , '-c',  ['-outdir ' SRC 'basler_helper']   ...
+libraries = {  [SRC 'basler_helper\basler_set_get.cpp']    , '-c',  '-outdir', [SRC 'basler_helper']   ...
                [SRC 'private\baslerGetRawCameraParams.cpp'], '';        ...
             };
 
@@ -53,15 +53,13 @@ switch nargin
         % Build libraries
         fprintf('=> Creating Libraries\n');
         for k=1:height(libraries)
-%             cd(libraries{k,1})
-            mex(flags{:}, libraries{k,2}, ipylon, lpylon, libraries{k,1})   % build
-%             cd('..');
+            mex(flags{:}, libraries{k,:}, ipylon, lpylon)   % build
         end
 
         % Build drivers
         fprintf('=> Creating Functions\n');
         for k=1:size(drivers,1)
-            mex(flags{:}, libraryObjects, drivers{k}, ipylon, lpylon, iboost, lboost, '-outdir release')
+            mex(flags{:}, libraryObjects, drivers{k}, ipylon, lpylon, iboost, lboost, '-outdir', 'release\')
         end
         
     case 1 %CLEAN
