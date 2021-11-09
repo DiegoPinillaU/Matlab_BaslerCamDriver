@@ -1,3 +1,29 @@
+## Fork of Matlab_BaslerCamDriver
+I've refurbished the original code in order to communicate with a Basler a2A4504-5gmPRO. 
+This camera doesn't work with Matlab GigE Vision neither Genicam hardware support packages.
+I hope someone find this useful.
+
+### Requirements:
+* [Boost C++ Libraries](http://www.boost.org/) (tested with v1.77)
+* [Basler Pylon 6](https://www.baslerweb.com/en/sales-support/downloads/software-downloads/) (tested with v6.2.0.18677 of C++ SDK)
+* And of course: a Basler Camera. 
+This driver should support any Basler camera, but has only been tested on:
+  - a2A4504-5gmPRO - GigE Vision camera
+
+## Build
+
+The MATLAB Basler Camera Driver is built by calling the provided `make.m` file. I'll also make available my results in the reporsitory tags.
+
+## Functions
+* `baslerFindCameras` returns a cell array containing the camera index and the camera name.
+* `baslerCameraInfo` returns a struct containing all parameters of the selected camera.
+* `baslerSetParameter` sets a camera parameter.
+* `baslerGetParameter` returns the selected camera parameter.
+* `baslerSetROI` sets the region of interest (ROI).
+* `baslerPreview` displays a preview image.
+* `baslerGetData` captures and returns the selected number of frames.
+* `baslerSaveData` captures and saves the selected number of frames to disk.
+
 # Matlab_BaslerCamDriver
 A universal MATLAB driver for Basler cameras
 
@@ -19,28 +45,6 @@ If you are interested in updating this driver to Pylon 5 please feel free to con
 Further, the camera support in MATLAB has improved significantly since this project was first published - 
 I suggest giving the MATLAB Image Acquisition Toolbox a try first.
 
-## Build
-
-The MATLAB Basler Camera Driver is built by calling the provided `make.m` file.
-
-### Requirements:
-* [Boost C++ Libraries](http://www.boost.org/) (+ `BOOST_ROOT` set to the Boost root directory)
-* [Basler Pylon 4](http://www.baslerweb.com/de/produkte/software) 
-* And of course: a Basler Camera. 
-This driver should support any Basler camera, but has only been tested on:
-  - acA1600-20gc - GigE Vision camera
-  - acA2000-165um - USB3.0 Vision camera
-  - raL8192-12gm - GigE Vision line scan camera
-
-## Functions
-* `baslerFindCameras` returns a cell array containing the camera index and the camera name.
-* `baslerCameraInfo` returns a struct containing all parameters of the selected camera.
-* `baslerSetParameter` sets a camera parameter.
-* `baslerGetParameter` returns the selected camera parameter.
-* `baslerSetROI` sets the region of interest (ROI).
-* `baslerPreview` displays a preview image.
-* `baslerGetData` captures and returns the selected number of frames.
-* `baslerSaveData` captures and saves the selected number of frames to disk.
 
 ## License
 
